@@ -14,12 +14,12 @@ pub struct Indexer {
 
 impl Indexer {
     /// Construct a new indexer
-    pub fn new(root: &str) -> Result<Self, AppError> {
+    pub fn new(root: String) -> Result<Self, AppError> {
         if !std::path::Path::new(&root).exists() {
             return Err(AppError::NetworkError);
         }
         Ok(Self {
-            root: String::from(root),
+            root,
         })
     }
 
@@ -42,18 +42,18 @@ mod tests {
 
     #[test]
     fn it_constructs() {
-        let good_root = "/Users/richardlyon/Dev/rust/dedupe/images";
+        let good_root = String::from("/Users/richardlyon/Dev/rust/dedupe/images");
         let indexer = Indexer::new(good_root);
         assert!(indexer.is_ok());
 
-        let bad_root = "/BadRoot";
+        let bad_root = String::from("/BadRoot");
         let indexer = Indexer::new(bad_root);
         assert!(indexer.is_err());
     }
 
     #[test]
     fn it_walks() {
-        let root = "/Users/richardlyon/Dev/rust/dedupe/images";
+        let root = String::from("/Users/richardlyon/Dev/rust/dedupe/images");
         let indexer = Indexer::new(root).unwrap();
         let mut filepaths: Vec<PathBuf> = Vec::new();
 

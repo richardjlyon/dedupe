@@ -1,4 +1,5 @@
 use dedupe::image::Image;
+use dedupe::indexer::Indexer;
 use exif::Reader;
 use indicatif::ProgressBar;
 use std::fs::File;
@@ -10,20 +11,34 @@ fn main() {
     // let root = "/Volumes/home/Photos/MobileBackup";
     let root = "/Users/richardlyon/Dev/rust/dedupe/images";
 
-    let mut filepaths: Vec<PathBuf> = Vec::new();
+    
+    // generate recursive list of images
+    println!("Getting images from {} ...", root);
+    
+    let mut indexer = Indexer::new(format!("{}/MobileBackup", root)).unwrap();
+    let mut backup_filepaths: Vec<PathBuf> = Vec::new();
+    indexer.walk(&mut backup_filepaths);
+    
+    indexer = Indexer::new(format!("{}/PhotoLibrary", root)).unwrap();
+    let mut library_filepaths: Vec<PathBuf> = Vec::new();
+    indexer.walk(&mut library_filepaths);
+    
+    
+    
+    
     let mut backup_images: Vec<Image> = Vec::new();
     let mut library_images: Vec<Image> = Vec::new();
 
-    // generate recursive list of images
-    println!("Getting images from {} ...", root);
-    for entry in WalkDir::new(root) {
-        // get image files, assumed to be a result with an extension
-        let entry = entry.unwrap();
-        let filepath = entry.into_path();
-        if filepath.extension().is_some() {
-            filepaths.push(filepath)
-        }
-    }
+
+
+    // for entry in WalkDir::new(format!("{}/", root) {
+    //     // get image files, assumed to be a result with an extension
+    //     let entry = entry.unwrap();
+    //     let filepath = entry.into_path();
+    //     if filepath.extension().is_some() {
+    //         filepaths.push(filepath)
+    //     }
+    // }
 
     // get exif data for 'backup' and 'library' images
     // let number: u64 = filepaths.len() as u64;
