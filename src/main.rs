@@ -25,34 +25,34 @@ fn main() {
     }
 
     // get exif data for 'backup' and 'library' images
-    let number: u64 = filepaths.len() as u64;
-    let bar = ProgressBar::new(number);
-    for filepath in filepaths {
-        let file = File::open(&filepath).unwrap();
-        let exif = Reader::new().read_from_container(&mut BufReader::new(&file));
-        if exif.is_ok() {
-            // get the library it belongs to, which is the 3rd last path component
-            let library = match filepath.components().nth_back(3).unwrap() {
-                Component::Normal(lib) => lib,
-                _ => continue,
-            };
-            // store it in the corresponding vector
-            match library.to_str().unwrap() {
-                "MobileBackup" => backup_images.push(Image::new(filepath, exif.unwrap())),
-                "PhotoLibrary" => library_images.push(Image::new(filepath, exif.unwrap())),
-                _ => {}
-            }
+    // let number: u64 = filepaths.len() as u64;
+    // let bar = ProgressBar::new(number);
+    // for filepath in filepaths {
+    //     let file = File::open(&filepath).unwrap();
+    //     let exif = Reader::new().read_from_container(&mut BufReader::new(&file));
+    //     if exif.is_ok() {
+    //         // get the library it belongs to, which is the 3rd last path component
+    //         let library = match filepath.components().nth_back(3).unwrap() {
+    //             Component::Normal(lib) => lib,
+    //             _ => continue,
+    //         };
+    //         // store it in the corresponding vector
+    //         match library.to_str().unwrap() {
+    //             "MobileBackup" => backup_images.push(Image::new(filepath, exif.unwrap())),
+    //             "PhotoLibrary" => library_images.push(Image::new(filepath, exif.unwrap())),
+    //             _ => {}
+    //         }
 
-            bar.inc(1);
-        }
-        bar.finish();
+    //         bar.inc(1);
+    //     }
+    //     bar.finish();
 
-        println!("Found {} in backup", backup_images.len());
-        println!("Found {} in library", library_images.len());
+    //     println!("Found {} in backup", backup_images.len());
+    //     println!("Found {} in library", library_images.len());
 
-        // detect duplicates
-        for library_image in &library_images {
-            library_image.date_time();
-        }
-    }
+    //     // detect duplicates
+    //     for library_image in &library_images {
+    //         library_image.date_time();
+    // }
+    // }
 }
