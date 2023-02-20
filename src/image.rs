@@ -1,14 +1,11 @@
-use std::{fmt, fs::File, io::BufReader, path::PathBuf};
+use std::{fmt, fs::File, fs::metadata, io::BufReader, path::PathBuf, time::SystemTime};
 
 use exif::{DateTime, Exif, In, Reader, Tag, Value};
 
-use crate::error::AppError;
+use filetime::FileTime;
+use chrono::prelude::*;
 
-pub struct Image {
-    filepath: PathBuf,
-    exif: Exif,
-    is_duplicate: bool,
-}
+use crate::error::AppError;
 
 pub struct Dimensions {
     width: u32,
@@ -21,13 +18,28 @@ impl fmt::Debug for Dimensions {
     }
 }
 
+pub struct Image {
+    filepath: PathBuf,
+    exif: Exif,
+    modified_time: chrono::DateTime<Utc>,
+    is_duplicate: bool,
+}
+
 impl Image {
     pub fn new(filepath: PathBuf) -> Result<Self, AppError> {
         let file = File::open(&filepath).unwrap();
         let exif = Reader::new().read_from_container(&mut BufReader::new(&file))?;
+        
+        let metadata = metadata(&filepath).unwrap();
+        let file_time = FileTime::from_last_modification_time(&metadata);
+        let unix_seconds = file_time.unix_seconds();
+        let naive = NaiveDateTime::from_timestamp_opt(unix_seconds, 0).unwrap();
+        let modified_time: chrono::DateTime<Utc> = chrono::DateTime::from_utc(naive, Utc);
+
         Ok(Self {
             filepath,
             exif,
+            modified_time,
             is_duplicate: false,
         })
     }
@@ -101,6 +113,7 @@ mod tests {
         let image = Image::new(test_path.clone()).unwrap();
         assert_eq!(image.filepath, test_path);
         assert_eq!(image.is_duplicate, false);
+        println!("{:?}", image.modified_time);
     }
 
     #[test]
