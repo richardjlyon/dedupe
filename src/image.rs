@@ -1,13 +1,13 @@
-//! A structure for representing an image and obtaining creation date, modified date, and dimensions.
-//! 
-//! 
+//! Functionality for representing an image and obtaining creation date, modified date, and dimensions.
+//!
+//!
 
-use std::{fmt, fs::File, fs::metadata, io::BufReader, path::PathBuf, time::SystemTime};
+use std::{fmt, fs::metadata, fs::File, io::BufReader, path::PathBuf, time::SystemTime};
 
 use exif::{DateTime, Exif, In, Reader, Tag, Value};
 
-use filetime::FileTime;
 use chrono::prelude::*;
+use filetime::FileTime;
 
 use crate::error::AppError;
 
@@ -36,7 +36,7 @@ impl Image {
     pub fn new(filepath: PathBuf) -> Result<Self, AppError> {
         let file = File::open(&filepath).unwrap();
         let exif = Reader::new().read_from_container(&mut BufReader::new(&file))?;
-        
+
         let metadata = metadata(&filepath).unwrap();
         let file_time = FileTime::from_last_modification_time(&metadata);
         let unix_seconds = file_time.unix_seconds();

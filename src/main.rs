@@ -9,6 +9,7 @@ use walkdir::WalkDir;
 fn main() {
     // let root = "/Volumes/home/Photos/MobileBackup";
     let root = "/Users/richardlyon/Dev/rust/dedupe/images";
+
     let mut filepaths: Vec<PathBuf> = Vec::new();
     let mut backup_images: Vec<Image> = Vec::new();
     let mut library_images: Vec<Image> = Vec::new();
