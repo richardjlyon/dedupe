@@ -10,6 +10,7 @@ use crate::error::AppError;
 
 pub struct Indexer {
     root: String,
+    filepaths: Vec<PathBuf>,
 }
 
 impl Indexer {
@@ -18,21 +19,28 @@ impl Indexer {
         if !std::path::Path::new(&root).exists() {
             return Err(AppError::NetworkError);
         }
+        let filepaths: Vec<PathBuf> = Vec::new();
         Ok(Self {
             root,
+            filepaths,
         })
     }
 
     /// Walk the given root and populate filepaths
-    pub fn walk(self, filepaths: &mut Vec<PathBuf>) {
-        for entry in WalkDir::new(self.root) {
+    pub fn walk(&mut self) {
+        for entry in WalkDir::new(&self.root) {
             // get image files, assumed to be a result with an extension
             let entry = entry.unwrap();
             let filepath = entry.into_path();
             if filepath.extension().is_some() {
-                filepaths.push(filepath)
+                self.filepaths.push(filepath)
             }
         }
+    }
+
+    /// Compute the number of file paths
+    pub fn n_paths(self) -> usize{
+        self.filepaths.len()
     }
 }
 
@@ -54,11 +62,20 @@ mod tests {
     #[test]
     fn it_walks() {
         let root = String::from("/Users/richardlyon/Dev/rust/dedupe/images");
-        let indexer = Indexer::new(root).unwrap();
-        let mut filepaths: Vec<PathBuf> = Vec::new();
+        let mut indexer = Indexer::new(root).unwrap();
 
-        indexer.walk(&mut filepaths);
+        indexer.walk();
 
-        assert_eq!(filepaths.len(), 131);
+        assert_eq!(indexer.filepaths.len(), 131);
+    }
+
+    #[test]
+    fn it_computes_number_of_paths() {
+        let root = String::from("/Users/richardlyon/Dev/rust/dedupe/images");
+        let mut indexer = Indexer::new(root).unwrap();
+
+        indexer.walk();
+
+        assert_eq!(indexer.n_paths(), 131);
     }
 }
