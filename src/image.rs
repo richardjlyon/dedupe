@@ -1,4 +1,4 @@
-use std::{fs::File, io::BufReader, path::PathBuf, fmt};
+use std::{fmt, fs::File, io::BufReader, path::PathBuf};
 
 use exif::{DateTime, Exif, In, Reader, Tag, Value};
 
@@ -8,6 +8,17 @@ pub struct Image {
     filepath: PathBuf,
     exif: Exif,
     is_duplicate: bool,
+}
+
+pub struct Dimensions {
+    width: u32,
+    height: u32,
+}
+
+impl fmt::Debug for Dimensions {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "Dimensions: {}x{}", self.width, self.height)
+    }
 }
 
 impl Image {
@@ -28,6 +39,32 @@ impl Image {
             _ => Err(AppError::DateTimeError),
         }
     }
+
+    pub fn pixel_dimension(&self) -> Result<Dimensions, AppError> {
+        let width = match self.exif.get_field(Tag::PixelXDimension, In::PRIMARY) {
+            Some(field) => {
+                if let Some(width) = field.value.get_uint(0) {
+                    width
+                } else {
+                    return Err(AppError::DimensionError);
+                }
+            }
+            None => return Err(AppError::DimensionError),
+        };
+
+        let height = match self.exif.get_field(Tag::PixelYDimension, In::PRIMARY) {
+            Some(field) => {
+                if let Some(height) = field.value.get_uint(0) {
+                    height
+                } else {
+                    return Err(AppError::DimensionError);
+                }
+            }
+            None => return Err(AppError::DimensionError),
+        };
+
+        Ok(Dimensions { width, height })
+    }
 }
 
 impl fmt::Debug for Image {
@@ -40,14 +77,17 @@ impl PartialEq for Image {
     fn eq(&self, other: &Self) -> bool {
         let date_time1 = self.date_time().unwrap();
         let date_time2 = other.date_time().unwrap();
+        let dimensions1 = self.pixel_dimension().unwrap();
+        let dimensions2 = other.pixel_dimension().unwrap();
 
-        (date_time1.second == date_time2.second) & 
-        (date_time1.minute == date_time2.minute) &
-        (date_time1.hour == date_time2.hour) &
-        (date_time1.day == date_time2.day) &
-        (date_time1.month == date_time2.month) &
-        (date_time1.year == date_time2.year)
-
+        (date_time1.second == date_time2.second)
+            & (date_time1.minute == date_time2.minute)
+            & (date_time1.hour == date_time2.hour)
+            & (date_time1.day == date_time2.day)
+            & (date_time1.month == date_time2.month)
+            & (date_time1.year == date_time2.year)
+            & (dimensions1.height == dimensions1.height)
+            & (dimensions2.height == dimensions2.height)
     }
 }
 
@@ -79,6 +119,15 @@ mod tests {
     }
 
     #[test]
+    fn it_gets_pixel_dimension() {
+        let test_path = PathBuf::from("/Users/richardlyon/Dev/rust/dedupe/images/MobileBackup/2021/06/IMG_20210601_073239.HEIC");
+        let image = Image::new(test_path.clone()).unwrap();
+
+        assert_eq!(image.pixel_dimension().unwrap().width, 4032);
+        assert_eq!(image.pixel_dimension().unwrap().height, 3024);
+    }
+
+    #[test]
     fn it_computes_equality() {
         let image1_path = PathBuf::from("/Users/richardlyon/Dev/rust/dedupe/images/MobileBackup/2021/06/IMG_20210601_073239.HEIC");
         let image2_path = PathBuf::from("/Users/richardlyon/Dev/rust/dedupe/images/MobileBackup/2021/06/IMG_20210601_073253.HEIC");
@@ -88,7 +137,5 @@ mod tests {
 
         assert_eq!(image1, image1);
         assert_ne!(image1, image2);
-
-
     }
 }

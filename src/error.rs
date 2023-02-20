@@ -8,4 +8,7 @@ pub enum AppError {
 
     #[error("no datetime found")]
     DateTimeError,
+
+    #[error("no dimension found")]
+    DimensionError,
 }
