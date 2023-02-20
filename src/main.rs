@@ -1,38 +1,10 @@
-use exif::{DateTime, Exif, In, Reader, Tag, Value};
+use dedupe::image::Image;
+use exif::Reader;
 use indicatif::ProgressBar;
 use std::fs::File;
 use std::io::BufReader;
 use std::path::{Component, PathBuf};
 use walkdir::WalkDir;
-
-struct Image {
-    filepath: PathBuf,
-    exif: Exif,
-    is_duplicate: bool,
-}
-
-impl Image {
-    pub fn new(filepath: PathBuf, exif: Exif) -> Self {
-        Self {
-            filepath,
-            exif,
-            is_duplicate: false,
-        }
-    }
-
-    pub fn date_time(&self) {
-        if let Some(field) = self.exif.get_field(Tag::DateTime, In::PRIMARY) {
-            match field.value {
-                Value::Ascii(ref vec) if !vec.is_empty() => {
-                    if let Ok(datetime) = DateTime::from_ascii(&vec[0]) {
-                        println!("Year of DateTime is {}.", datetime.year);
-                    }
-                }
-                _ => {}
-            }
-        }
-    }
-}
 
 fn main() {
     // let root = "/Volumes/home/Photos/MobileBackup";
