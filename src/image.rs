@@ -1,3 +1,7 @@
+//! A structure for representing an image and obtaining creation date, modified date, and dimensions.
+//! 
+//! 
+
 use std::{fmt, fs::File, fs::metadata, io::BufReader, path::PathBuf, time::SystemTime};
 
 use exif::{DateTime, Exif, In, Reader, Tag, Value};
@@ -7,6 +11,7 @@ use chrono::prelude::*;
 
 use crate::error::AppError;
 
+/// Represents the dimensions of the image as [width x height].
 pub struct Dimensions {
     width: u32,
     height: u32,
@@ -18,6 +23,7 @@ impl fmt::Debug for Dimensions {
     }
 }
 
+/// Represents an image.
 pub struct Image {
     filepath: PathBuf,
     exif: Exif,
@@ -26,6 +32,7 @@ pub struct Image {
 }
 
 impl Image {
+    /// Construct a new image from its file path.
     pub fn new(filepath: PathBuf) -> Result<Self, AppError> {
         let file = File::open(&filepath).unwrap();
         let exif = Reader::new().read_from_container(&mut BufReader::new(&file))?;
@@ -44,6 +51,7 @@ impl Image {
         })
     }
 
+    /// Get the image creation date.
     pub fn date_time(&self) -> Result<DateTime, AppError> {
         let field = self.exif.get_field(Tag::DateTime, In::PRIMARY).unwrap();
         match &field.value {
@@ -52,6 +60,7 @@ impl Image {
         }
     }
 
+    /// Get the image pixel dimensions.
     pub fn pixel_dimension(&self) -> Result<Dimensions, AppError> {
         let width = match self.exif.get_field(Tag::PixelXDimension, In::PRIMARY) {
             Some(field) => {
