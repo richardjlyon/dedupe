@@ -1,6 +1,13 @@
-//! Functionality for indexing a folder of images.
-//!
-//!
+/*!
+Module `indexers` provides functions for indexing a folder of images.
+
+# Example
+
+The following code recursively iterates over the given directory and provides
+a vector of discovered files
+
+
+*/
 
 use std::{fs::DirEntry, path::PathBuf};
 
@@ -25,7 +32,7 @@ impl Indexer {
 
     /// Walk the given root and populate filepaths
     pub fn walk(&mut self) {
-        let walker = WalkDir::new(&self.root).into_iter();
+        let walker = WalkDir::new(&self.root).max_open(30).into_iter();
         for entry in walker {
             // get image files, assumed to be a result with an extension
             let entry = entry.unwrap();
