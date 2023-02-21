@@ -1,8 +1,8 @@
-//! Functionality for representing an image and obtaining creation date, modified date, and dimensions.
-//!
-//!
+/*!
+Functionality for representing an image and obtaining creation date, modified date, and dimensions.
+*/
 
-use std::{fmt, fs::metadata, fs::File, hash::Hasher, io::BufReader, path::PathBuf};
+use std::{fmt, fs::metadata, fs::File, io::BufReader, path::PathBuf};
 
 use exif::{DateTime, Exif, In, Reader, Tag, Value};
 
@@ -27,9 +27,8 @@ impl fmt::Debug for Dimensions {
 /// Represents an image.
 pub struct Image {
     pub filepath: PathBuf,
-    exif: Exif,
+    pub exif: Exif,
     modified_time: chrono::DateTime<Utc>,
-    is_duplicate: bool,
 }
 
 impl Image {
@@ -48,7 +47,6 @@ impl Image {
             filepath,
             exif,
             modified_time,
-            is_duplicate: false,
         })
     }
 
@@ -102,12 +100,29 @@ impl fmt::Debug for Image {
 impl PartialEq for Image {
     fn eq(&self, other: &Self) -> bool {
         // returns false if either image has no datetime
-        if self.date_time().is_err()
-            || other.date_time().is_err()
-            || self.pixel_dimension().is_err()
-            || other.pixel_dimension().is_err()
-        {
-            log::warn!("This is an example message.");
+        // if self.date_time().is_err()
+        //     || other.date_time().is_err()
+        //     || self.pixel_dimension().is_err()
+        //     || other.pixel_dimension().is_err()
+        // {
+        //     log::warn!("No This is an example message.");
+        //     return false;
+        // }
+        
+        if self.date_time().is_err() {
+            log::warn!("No datetime: {}", self.filepath.display());
+            return false;
+        }        
+        if other.date_time().is_err() {
+            log::warn!("No datetime: {}", other.filepath.display());
+            return false;
+        }        
+        if self.pixel_dimension().is_err() {
+            log::warn!("No pixel info: {}", self.filepath.display());
+            return false;
+        }        
+        if other.pixel_dimension().is_err() {
+            log::warn!("No pixel info: {}", other.filepath.display());
             return false;
         }
 
@@ -152,18 +167,35 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_constructs() {
+    fn it_constructs_an_image_with_an_exif() {
         let test_path = PathBuf::from("/Users/richardlyon/Dev/rust/dedupe/images/MobileBackup/2021/06/IMG_20210601_073239.HEIC");
         let image = Image::new(test_path.clone()).unwrap();
         assert_eq!(image.filepath, test_path);
-        assert_eq!(image.is_duplicate, false);
-        println!("{:?}", image.modified_time);
+    }
+
+    #[test]
+    fn it_doesnt_construct_an_image_with_no_exif() {
+        let test_image = "/Users/richardlyon/Dev/rust/dedupe/test_images/date_time/no_exif.HEIC";
+        let test_path = PathBuf::from(test_image);
+        let image = Image::new(test_path.clone());
+        assert!(image.is_err());
+    }
+
+    #[test]
+    fn it_rejects_images_with_no_exif_data() {
+        let test_image = "/Users/richardlyon/Dev/rust/dedupe/test_images/date_time/no_exif.HEIC";
+        let test_path = PathBuf::from(test_image);
+        let image = Image::new(test_path.clone());
+
+        assert!(image.is_err());
     }
 
     #[test]
     fn it_gets_date_time() {
         // expect created date to be DateTime { year: 2021, month: 6, day: 1, hour: 7, minute: 32, second: 39, nanosecond: None, offset: None }
-        let test_path = PathBuf::from("/Users/richardlyon/Dev/rust/dedupe/images/MobileBackup/2021/06/IMG_20210601_073239.HEIC");
+
+        let test_image = "/Users/richardlyon/Dev/rust/dedupe/test_images/date_time/has_exif.HEIC";
+        let test_path = PathBuf::from(test_image);
         let image = Image::new(test_path.clone()).unwrap();
         let date_time = image.date_time().unwrap();
 
