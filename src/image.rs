@@ -6,10 +6,10 @@ use std::{fmt, fs::metadata, fs::File, hash::Hasher, io::BufReader, path::PathBu
 
 use exif::{DateTime, Exif, In, Reader, Tag, Value};
 
+use crate::error::AppError;
 use chrono::prelude::*;
 use filetime::FileTime;
 use highway::{HighwayHash, PortableHash};
-use crate::error::AppError;
 use log;
 
 /// Represents the dimensions of the image as [width x height].

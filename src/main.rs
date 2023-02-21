@@ -4,9 +4,7 @@ use indicatif::ProgressBar;
 use simple_logger::SimpleLogger;
 
 fn main() {
-
     SimpleLogger::new().init().unwrap();
-    
 
     // let root = "/Volumes/home/Photos";
     let root = "/Users/richardlyon/Dev/rust/dedupe/images";

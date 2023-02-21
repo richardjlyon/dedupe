@@ -2,7 +2,7 @@
 //!
 //!
 
-use std::path::PathBuf;
+use std::{fs::DirEntry, path::PathBuf};
 
 use walkdir::WalkDir;
 
@@ -25,12 +25,12 @@ impl Indexer {
 
     /// Walk the given root and populate filepaths
     pub fn walk(&mut self) {
-        for entry in WalkDir::new(&self.root) {
+        let walker = WalkDir::new(&self.root).into_iter();
+        for entry in walker {
             // get image files, assumed to be a result with an extension
             let entry = entry.unwrap();
-            let filepath = entry.into_path();
-            if filepath.extension().is_some() {
-                self.filepaths.push(filepath)
+            if is_valid(&entry) {
+                self.filepaths.push(entry.into_path())
             }
         }
     }
@@ -39,6 +39,12 @@ impl Indexer {
     pub fn n_paths(&self) -> u64 {
         self.filepaths.len() as u64
     }
+}
+
+/// return true if the entry is a valid image
+/// for now, this is if it has an extension
+fn is_valid(entry: &walkdir::DirEntry) -> bool {
+    entry.clone().into_path().extension().is_some()
 }
 
 #[cfg(test)]
