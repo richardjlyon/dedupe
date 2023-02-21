@@ -6,7 +6,7 @@ pub enum AppError {
     #[error("exif decode error")]
     ExifError(#[from] exif::Error),
 
-    #[error("no datetime found")]
+    #[error("missing datetime error")]
     DateTimeError,
 
     #[error("no dimension found")]

@@ -10,7 +10,7 @@ use crate::error::AppError;
 
 pub struct Indexer {
     root: String,
-    filepaths: Vec<PathBuf>,
+    pub filepaths: Vec<PathBuf>,
 }
 
 impl Indexer {
@@ -20,10 +20,7 @@ impl Indexer {
             return Err(AppError::NetworkError);
         }
         let filepaths: Vec<PathBuf> = Vec::new();
-        Ok(Self {
-            root,
-            filepaths,
-        })
+        Ok(Self { root, filepaths })
     }
 
     /// Walk the given root and populate filepaths
@@ -39,8 +36,8 @@ impl Indexer {
     }
 
     /// Compute the number of file paths
-    pub fn n_paths(self) -> usize{
-        self.filepaths.len()
+    pub fn n_paths(&self) -> u64 {
+        self.filepaths.len() as u64
     }
 }
 

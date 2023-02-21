@@ -2,14 +2,15 @@
 //!
 //!
 
-use std::{fmt, fs::metadata, fs::File, io::BufReader, path::PathBuf, time::SystemTime};
+use std::{fmt, fs::metadata, fs::File, hash::Hasher, io::BufReader, path::PathBuf};
 
 use exif::{DateTime, Exif, In, Reader, Tag, Value};
 
 use chrono::prelude::*;
 use filetime::FileTime;
-
+use highway::{HighwayHash, PortableHash};
 use crate::error::AppError;
+use log;
 
 /// Represents the dimensions of the image as [width x height].
 pub struct Dimensions {
@@ -25,7 +26,7 @@ impl fmt::Debug for Dimensions {
 
 /// Represents an image.
 pub struct Image {
-    filepath: PathBuf,
+    pub filepath: PathBuf,
     exif: Exif,
     modified_time: chrono::DateTime<Utc>,
     is_duplicate: bool,
@@ -53,7 +54,11 @@ impl Image {
 
     /// Get the image creation date.
     pub fn date_time(&self) -> Result<DateTime, AppError> {
-        let field = self.exif.get_field(Tag::DateTime, In::PRIMARY).unwrap();
+        // let field = self.exif.get_field(Tag::DateTime, In::PRIMARY).unwrap();
+        let field = match self.exif.get_field(Tag::DateTime, In::PRIMARY) {
+            Some(data) => data,
+            None => return Err(AppError::DateTimeError),
+        };
         match &field.value {
             Value::Ascii(vec) => Ok(DateTime::from_ascii(&vec[0]).unwrap()),
             _ => Err(AppError::DateTimeError),
@@ -96,19 +101,49 @@ impl fmt::Debug for Image {
 
 impl PartialEq for Image {
     fn eq(&self, other: &Self) -> bool {
+        // returns false if either image has no datetime
+        if self.date_time().is_err()
+            || other.date_time().is_err()
+            || self.pixel_dimension().is_err()
+            || other.pixel_dimension().is_err()
+        {
+            log::warn!("This is an example message.");
+            return false;
+        }
+
         let date_time1 = self.date_time().unwrap();
         let date_time2 = other.date_time().unwrap();
+
         let dimensions1 = self.pixel_dimension().unwrap();
         let dimensions2 = other.pixel_dimension().unwrap();
 
-        (date_time1.second == date_time2.second)
+        // check exif parameters
+        let exif_match = (date_time1.second == date_time2.second)
             & (date_time1.minute == date_time2.minute)
             & (date_time1.hour == date_time2.hour)
             & (date_time1.day == date_time2.day)
             & (date_time1.month == date_time2.month)
             & (date_time1.year == date_time2.year)
             & (dimensions1.height == dimensions1.height)
-            & (dimensions2.height == dimensions2.height)
+            & (dimensions2.height == dimensions2.height);
+
+        // check hash
+        if exif_match {
+            let mut file1 = File::open(&self.filepath).unwrap();
+            let mut file2 = File::open(&other.filepath).unwrap();
+            let mut hasher1 = PortableHash::default();
+            let mut hasher2 = PortableHash::default();
+
+            std::io::copy(&mut file1, &mut hasher1).unwrap();
+            std::io::copy(&mut file2, &mut hasher2).unwrap();
+
+            let hash64_1 = hasher1.finalize256();
+            let hash64_2 = hasher2.finalize256();
+
+            return hash64_1 == hash64_2;
+        }
+
+        false
     }
 }
 
