@@ -1,4 +1,4 @@
-use dedupe::html::{Duplicates, PairData};
+use dedupe::html::{to_html, Duplicates, PairData};
 use dedupe::image::Images;
 use dedupe::indexer::Indexer;
 use dedupe::{html::ImageData, image::Image};
@@ -78,5 +78,8 @@ fn main() {
             }
         }
     }
-    println!("{:#?}", duplicates.data);
+
+    // visualise
+
+    to_html(&duplicates);
 }
