@@ -1,7 +1,7 @@
 use dedupe::image::Image;
 use dedupe::indexer::Indexer;
 use indicatif::ProgressBar;
-use maud::html;
+use maud::{html, DOCTYPE};
 
 fn main() {
     // let root = "/Volumes/home/Photos";
@@ -39,13 +39,10 @@ fn main() {
     }
     bar.finish();
 
-    // let markup = html! {
-    //     !doctype html
-    //     <html lang="en">
-    //     <head>
-    //     <title>A Basic HTML5 Template</title>
+    let markup = html! {
+        (DOCTYPE)
 
-    // };
+    };
 
     // detect duplicates
     for mobile_image in &mobile_images {
