@@ -1,0 +1,652 @@
+{
+  "data": [
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1402.jpeg",
+      "hash64": [
+        11848095089634180311,
+        12895106802519228589,
+        4245623411432341977,
+        10521288410237029542
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1341.jpeg",
+      "hash64": [
+        3226144779684509835,
+        7958256737609570964,
+        5855621248591701775,
+        13655808283705792260
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0601_0633_1.heic",
+      "hash64": [
+        9180907969995913004,
+        10638578579032275584,
+        3282901088353935400,
+        1914566463669022865
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0623_0930_1.jpg",
+      "hash64": [
+        7094080619695751528,
+        4084879870539368240,
+        6627259123671984737,
+        9654937117840057864
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0623_0930.jpg",
+      "hash64": [
+        15394622578737710000,
+        10683052772954742064,
+        13734393767713923554,
+        16840028122135402417
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0623_0928.jpeg",
+      "hash64": [
+        11327744701723024532,
+        4031000383729140568,
+        1761677042267399394,
+        15789759068270410172
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0620_1039_1.heic",
+      "hash64": [
+        10829925680195756806,
+        8267831079487145641,
+        14444981523866984108,
+        2045210977276979679
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0617_1654.heic",
+      "hash64": [
+        9762396952167033894,
+        3068616281614988943,
+        7307570873999376845,
+        13916741192538779678
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0623_0937.jpg",
+      "hash64": [
+        5050902748075975407,
+        14854605477955531188,
+        1310008679531811732,
+        8467600905773462768
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1254_1.mov",
+      "hash64": [
+        3083480661116199861,
+        17046612055694508523,
+        9896720215549696539,
+        14479797954288976175
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/DSCF4858.RAF",
+      "hash64": [
+        6184559227025084366,
+        10847172644726428305,
+        6767199502589014959,
+        15473608195201745730
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0612_1840.heic",
+      "hash64": [
+        14140638644030375509,
+        1907703926444174726,
+        8699088923073416308,
+        15518880466280238524
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1303.heic",
+      "hash64": [
+        13937804060803861059,
+        15888836163146545191,
+        3539052771032987879,
+        4448293234376671886
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0620_1040.heic",
+      "hash64": [
+        3024008434225625662,
+        1041795798448880675,
+        6876633584379393356,
+        12506763206274481102
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1254.mov",
+      "hash64": [
+        12173712834788058784,
+        12573983776946135640,
+        9708950856890621217,
+        3598297595871561990
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0626_1547.mp4",
+      "hash64": [
+        8843382794797623608,
+        16022810694015779642,
+        17004110343100828052,
+        2878038213956291818
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0623_0936.jpg",
+      "hash64": [
+        6136441826077510355,
+        3613108700873761386,
+        3865982896367997560,
+        717826552404172681
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0620_0939.heic",
+      "hash64": [
+        15257640530619813495,
+        13438015216335335072,
+        15132573594084387364,
+        9521320604955924015
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0611_1643.heic",
+      "hash64": [
+        16371263836458618083,
+        16709626779310949488,
+        15950074918492848498,
+        10742235439341404968
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0603_1805_1.heic",
+      "hash64": [
+        658147892508609103,
+        734249060109663304,
+        6140365286359136321,
+        9921432682380885679
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0620_1040_1.heic",
+      "hash64": [
+        12502404270474207298,
+        16992524425692724127,
+        12041559141900363371,
+        17306992486029615409
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0603_1805.heic",
+      "hash64": [
+        11182045768681995873,
+        15098338894994709117,
+        4050564345294438502,
+        4744035720877576375
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1432.jpeg",
+      "hash64": [
+        3606973253346581566,
+        5004944492598961044,
+        7734703576188474559,
+        1214174274565459599
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1308.heic",
+      "hash64": [
+        14989739191101491456,
+        10748627771585839832,
+        18131635697067810272,
+        16136308376381122569
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0605_1721.heic",
+      "hash64": [
+        8885815013138224073,
+        12211834248999792769,
+        17406464606258595295,
+        9740120821585140717
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1555.heic",
+      "hash64": [
+        4578610266922719650,
+        10042334751718296931,
+        14447784729926100976,
+        17513986275513598328
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1308_2.heic",
+      "hash64": [
+        1166067303985878349,
+        13795827238669009217,
+        2198303701392750150,
+        5279585672348694288
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0621_1718.heic",
+      "hash64": [
+        16330743707448294978,
+        4550189499624961024,
+        3516642951887669715,
+        15515875760734063741
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0601_1155.heic",
+      "hash64": [
+        13945729698955004808,
+        7741885925145230198,
+        1667264829328350074,
+        10867082379497308517
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0623_0937_1.jpg",
+      "hash64": [
+        12075003315619252930,
+        11056474113747171231,
+        12485398803460846113,
+        15313874482128205986
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1303_1.heic",
+      "hash64": [
+        1949033344431071278,
+        2582087558124067885,
+        11690269259246484546,
+        15196283108061987086
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1341.mov",
+      "hash64": [
+        8182490846497770424,
+        1130678684213209313,
+        16349466438142336773,
+        2260172295754117401
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0602_1639.heic",
+      "hash64": [
+        7202373532478895440,
+        6346560735543057608,
+        354437883054419789,
+        3860504454858419586
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1254.jpeg",
+      "hash64": [
+        6659164553316420428,
+        13848340071734083354,
+        10896094082867324762,
+        15798358912536688993
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1432.mov",
+      "hash64": [
+        13491114276426647952,
+        14324715038645846116,
+        2975684193094819196,
+        14988362943890655565
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1254_1.jpeg",
+      "hash64": [
+        5054426968694491168,
+        13920556110380048068,
+        1724822280712358525,
+        2600698903108329887
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0621_1715.heic",
+      "hash64": [
+        512834362206361572,
+        7425891848645418226,
+        11825075198768584137,
+        16722334719352800993
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0609_0658.heic",
+      "hash64": [
+        1501485726847284463,
+        777158978869508127,
+        5673344302676848016,
+        16152131933420439713
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1237.heic",
+      "hash64": [
+        11657951074427928865,
+        8793802781260224615,
+        13135847605976924948,
+        10363972049366069186
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0621_1716.heic",
+      "hash64": [
+        17018910942441701858,
+        7820646926231274783,
+        7091686193277113684,
+        1903974516826645989
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0606_1721.heic",
+      "hash64": [
+        5966157695643481369,
+        16895343646647896881,
+        15447654927679632524,
+        3956299170642577285
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0621_1715_1.heic",
+      "hash64": [
+        3475761723783450658,
+        17157910586818620914,
+        2092135656120973558,
+        11583216811708827107
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1238.mov",
+      "hash64": [
+        9206062778017378157,
+        10459906828783617762,
+        4365180163380460857,
+        10062749379359925984
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0601_0632_1.heic",
+      "hash64": [
+        10172217514365028163,
+        9082787207800086732,
+        7217401170985483193,
+        17026153660117468728
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0606_1812.heic",
+      "hash64": [
+        14270460869901389068,
+        3624038337513665281,
+        14166365761380329413,
+        18107494264602698001
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1238.heic",
+      "hash64": [
+        7887018242928796361,
+        10870182055514727278,
+        5616624981508282606,
+        15025406046722773039
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0618_1402.mov",
+      "hash64": [
+        6760583269386870809,
+        1954384201471104348,
+        9115094080820981052,
+        14129201133889497150
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0612_1652.heic",
+      "hash64": [
+        17375147280593332199,
+        10895625803500118470,
+        15502222920439150502,
+        4358582594534657076
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1308_1.heic",
+      "hash64": [
+        11305315087903302217,
+        15971398889551582428,
+        14176808607888137598,
+        12315775718815705056
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0606_1720.heic",
+      "hash64": [
+        8262729765928697008,
+        1318000474445166015,
+        2102430806315870107,
+        2830011469374814589
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0601_0717.heic",
+      "hash64": [
+        645766651347668967,
+        7126331797399763570,
+        17061620123809779406,
+        2414021098230845183
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/DSCF4854.RAF",
+      "hash64": [
+        1941678042362881411,
+        338895918831494027,
+        1812911794647275402,
+        15703624774329884367
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0621_1634.heic",
+      "hash64": [
+        5213599835685079709,
+        3996778368924076213,
+        12969945415784867379,
+        14222136887743677258
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0606_1711.heic",
+      "hash64": [
+        14476083455652227798,
+        12105913072972765988,
+        16309396409971732209,
+        457508757841046948
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/DSCF4855.RAF",
+      "hash64": [
+        2432242901110314685,
+        11967750650568494309,
+        5816683531742478123,
+        8812488908328147775
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0624_1748.heic",
+      "hash64": [
+        1942097174305642903,
+        6181182747748136868,
+        5066213062515091202,
+        3042587104482111319
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/DSCF4857.RAF",
+      "hash64": [
+        14881782652127564574,
+        491524213507771568,
+        7932266723026982518,
+        10364499078413226667
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0617_1723.mov",
+      "hash64": [
+        13510499726769940980,
+        13222126222623648267,
+        709106586687860466,
+        2766628145833271260
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0605_1322.heic",
+      "hash64": [
+        8942038752932596027,
+        1366296772615097510,
+        18106962643459316376,
+        15869797187656576856
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0601_0633.heic",
+      "hash64": [
+        1218749639503521723,
+        564730666568024959,
+        15710056231941169050,
+        13711388649041061064
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/DSCF4856.RAF",
+      "hash64": [
+        5563169674978898898,
+        1985303971816743981,
+        3039741492622751378,
+        11594194841751160311
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0623_0939.jpg",
+      "hash64": [
+        12905462800159780913,
+        15273747858866298980,
+        13580529261799789900,
+        17211442985589165211
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0623_0929.jpg",
+      "hash64": [
+        10192681218938999130,
+        7121755077152547614,
+        1163281039847938819,
+        3885304114473738089
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/DSCF4852.RAF",
+      "hash64": [
+        7407371141552510895,
+        11904187922369081169,
+        2210208254329708699,
+        10784573654487213199
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0617_1656.heic",
+      "hash64": [
+        3318732744728244143,
+        5661668190913770725,
+        10343919938473597759,
+        11634728323652522074
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0617_1726.mov",
+      "hash64": [
+        11496810039416816891,
+        17918409501466434677,
+        6597163033901901341,
+        3305701648703010989
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0601_0632.heic",
+      "hash64": [
+        9767050612884806388,
+        13697188231940719223,
+        8062590824144684221,
+        6620976012418563638
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/DSCF4853.RAF",
+      "hash64": [
+        9686309173540210688,
+        3440916788953378491,
+        11235343110125764629,
+        5885638731387613673
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0627_1238_1.heic",
+      "hash64": [
+        13411783820310054119,
+        15206341611771187579,
+        2148198112471139111,
+        3966500999440420039
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0606_1710.heic",
+      "hash64": [
+        5952713374504335760,
+        13274408380219317590,
+        17970046700317799260,
+        3555697024150481823
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0617_1724.mov",
+      "hash64": [
+        5298375997051372356,
+        10154113733395163874,
+        1017736358828418517,
+        6396175812520066611
+      ]
+    },
+    {
+      "filepath": "/Users/richardlyon/Dev/rust/dedupe/images/PhotoLibrary/2021/06/2021_0620_1039.heic",
+      "hash64": [
+        17599707884612634198,
+        16950255223175573523,
+        8139150860253847188,
+        12349326487795051215
+      ]
+    }
+  ]
+}

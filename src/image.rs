@@ -2,16 +2,22 @@
 Functionality for representing an image and obtaining creation date, modified date, and dimensions.
 */
 
-use std::{fmt, fs::File, path::PathBuf};
+use std::{fmt, io::Write, fs::File, path::PathBuf};
 
 use crate::error::AppError;
 use highway::{HighwayHash, PortableHash};
+use serde::{Serialize, Deserialize};
 
 /// Represents an image.
-#[derive(Clone)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct Image {
     pub filepath: PathBuf,
     pub hash64: [u64; 4],
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Images {
+    pub data: Vec<Image>,
 }
 
 impl Image {
@@ -41,6 +47,21 @@ impl fmt::Debug for Image {
 impl PartialEq for Image {
     fn eq(&self, other: &Self) -> bool {
         self.hash64 == other.hash64
+    }
+}
+
+impl Images {
+    pub fn new() -> Self {
+        let data: Vec<Image> = Vec::new();
+        Self { data }
+    }
+
+    pub fn save_to_disk(&self, filename: &str) -> Result<(), AppError> {
+        let serialised = serde_json::to_string_pretty(&self)?;
+        let mut output = File::create(format!("{}.json", filename))?;
+        write!(output, "{}", serialised);
+
+        Ok(())
     }
 }
 
