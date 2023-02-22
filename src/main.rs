@@ -1,5 +1,6 @@
-use dedupe::image::Image;
+use dedupe::html::{Duplicates, PairData};
 use dedupe::indexer::Indexer;
+use dedupe::{html::ImageData, image::Image};
 use indicatif::ProgressBar;
 use maud::{html, DOCTYPE};
 
@@ -39,17 +40,28 @@ fn main() {
     }
     bar.finish();
 
-    let markup = html! {
-        (DOCTYPE)
-
-    };
-
     // detect duplicates
+    let mut duplicates: Duplicates = Duplicates::new();
     for mobile_image in &mobile_images {
         for library_image in &library_images {
             if mobile_image == library_image {
-                println!("Duplicate: {}", library_image.filepath.display());
+                let left_image = ImageData {
+                    // TODO find a better way that avoinds clone()
+                    name: mobile_image.clone().file_name(),
+                    filepath: mobile_image.filepath.clone(),
+                };
+                let right_image = ImageData {
+                    // TODO find a better way that avoinds clone()
+                    name: library_image.clone().file_name(),
+                    filepath: library_image.filepath.clone(),
+                };
+                duplicates.data.push(PairData {
+                    left_image,
+                    right_image,
+                });
             }
         }
     }
+    println!("{:#?}", duplicates.data);
+    duplicates.save_to_disk();
 }

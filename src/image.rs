@@ -8,6 +8,7 @@ use crate::error::AppError;
 use highway::{HighwayHash, PortableHash};
 
 /// Represents an image.
+#[derive(Clone)]
 pub struct Image {
     pub filepath: PathBuf,
     pub hash64: [u64; 4],
@@ -22,6 +23,12 @@ impl Image {
         let hash64 = hasher.finalize256();
 
         Ok(Self { filepath, hash64 })
+    }
+
+    // Compute the filename.
+    pub fn file_name(self) -> String {
+        let filename = self.filepath.file_name().unwrap().to_str().unwrap();
+        String::from(filename)
     }
 }
 
@@ -46,6 +53,13 @@ mod tests {
         let test_path = PathBuf::from("/Users/richardlyon/Dev/rust/dedupe/images/MobileBackup/2021/06/IMG_20210601_073239.HEIC");
         let image = Image::new(test_path.clone()).unwrap();
         assert_eq!(image.filepath, test_path);
+    }
+
+    #[test]
+    fn it_computes_filename() {
+        let test_path = PathBuf::from("/Users/richardlyon/Dev/rust/dedupe/images/MobileBackup/2021/06/IMG_20210601_073239.HEIC");
+        let image = Image::new(test_path.clone()).unwrap();
+        assert_eq!(image.file_name(), "IMG_20210601_073239.HEIC");
     }
 
     #[test]
