@@ -1,11 +1,9 @@
 use dedupe::image::Image;
 use dedupe::indexer::Indexer;
 use indicatif::ProgressBar;
-use simple_logger::SimpleLogger;
+use maud::html;
 
 fn main() {
-    SimpleLogger::new().init().unwrap();
-
     // let root = "/Volumes/home/Photos";
     let root = "/Users/richardlyon/Dev/rust/dedupe/images";
     let mut mobile_indexer = Indexer::new(format!("{}/MobileBackup", root)).unwrap();
@@ -40,6 +38,14 @@ fn main() {
         bar.inc(1);
     }
     bar.finish();
+
+    // let markup = html! {
+    //     !doctype html
+    //     <html lang="en">
+    //     <head>
+    //     <title>A Basic HTML5 Template</title>
+
+    // };
 
     // detect duplicates
     for mobile_image in &mobile_images {
