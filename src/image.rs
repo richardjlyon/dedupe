@@ -2,11 +2,11 @@
 Functionality for representing an image and obtaining creation date, modified date, and dimensions.
 */
 
-use std::{fmt, io::Write, fs::File, path::PathBuf};
+use std::{fmt, fs::File, io::Write, path::PathBuf};
 
 use crate::error::AppError;
 use highway::{HighwayHash, PortableHash};
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 /// Represents an image.
 #[derive(Serialize, Deserialize, Clone)]
